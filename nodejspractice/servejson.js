@@ -1,13 +1,13 @@
 var http = require("http");
-var fs = require("fs");
 
 var server = http.createServer(function (req, res) {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  var myReadStream = fs.createReadStream(
-    __dirname + "/../readStreamText.txt",
-    "utf8"
-  );
-  myReadStream.pipe(res);
+  res.writeHead(200, { "Content-Type": "application/json" });
+  var myObj = {
+    name: "Riyu",
+    job: "Ninja",
+    age: 29,
+  };
+  res.end(JSON.stringify(myObj));
 });
 
 server.listen(2001, "127.0.0.1");
